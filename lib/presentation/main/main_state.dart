@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:image_search_8day/data/model/photo.dart';
+import 'package:image_search_8day/domain/model/photo.dart';
 
 part 'main_state.freezed.dart';
 

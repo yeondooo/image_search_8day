@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:image_search_8day/data/model/photo.dart';
 import 'package:image_search_8day/data/repository/pixabay_photo_repository_impl.dart';
-import 'package:image_search_8day/ui/detail/detail_screen.dart';
-import 'package:image_search_8day/ui/main/main_screen.dart';
-import 'package:image_search_8day/ui/main/main_view_model.dart';
+import 'package:image_search_8day/domain/model/photo.dart';
+import 'package:image_search_8day/domain/use_case/get_top_five_viewd_image_use_case.dart';
+import 'package:image_search_8day/presentation/detail/detail_screen.dart';
+import 'package:image_search_8day/presentation/main/main_screen.dart';
+import 'package:image_search_8day/presentation/main/main_view_model.dart';
 import 'package:provider/provider.dart';
 
 final GoRouter router = GoRouter(
@@ -14,7 +15,9 @@ final GoRouter router = GoRouter(
       builder: (BuildContext context, GoRouterState state) {
         return ChangeNotifierProvider(
           create: (_) => MainViewModel(
-            PixabayPhotoRepositoryImpl(),
+            GetTopFiveViewdImageUseCase(
+              PixabayPhotoRepositoryImpl(),
+            ),
           ),
           child: const MainScreen(),
         );
